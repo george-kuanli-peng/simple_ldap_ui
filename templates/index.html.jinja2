@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8">
+    <title>Simple LDAP Page</title>
+</head>
+<body>
+<h1>Simple LDAP Page</h1>
+<h2>驗證使用者</h2>
+<form action="check_account" method="post">
+    使用者：<br>
+    <input type="text" name="username"><br>
+    密碼：<br>
+    <input type="password" name="password"><br>
+    <input type="submit" value="submit">
+</form>
+<h2>重設密碼</h2>
+<form action="reset_password" method="post">
+    使用者：<br>
+    <input type="text" name="username"><br>
+    新密碼：<br>
+    <input type="password" name="password"><br>
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>
