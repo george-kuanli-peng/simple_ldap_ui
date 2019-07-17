@@ -1,7 +1,8 @@
 FROM ubuntu:18.04
 
-RUN apt-get -y update \
-    && apt-get -y install \
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get -y update \
+    && apt-get -q -y install \
         build-essential \
         python3 \
         python3-dev \
