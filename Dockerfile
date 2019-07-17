@@ -1,24 +1,23 @@
 FROM ubuntu:18.04
 
 # set unattended installation for slapd
-RUN cat > /root/debconf-slapd.conf << 'EOF'\
-slapd slapd/password1 password admin\
-slapd slapd/internal/adminpw password admin\
-slapd slapd/internal/generated_adminpw password admin\
-slapd slapd/password2 password admin\
-slapd slapd/unsafe_selfwrite_acl note\
-slapd slapd/purge_database boolean false\
-slapd slapd/domain string phys.ethz.ch\
-slapd slapd/ppolicy_schema_needs_update select abort installation\
-slapd slapd/invalid_config boolean true\
-slapd slapd/move_old_database boolean false\
-slapd slapd/backend select MDB\
-slapd shared/organization string ETH Zurich\
-slapd slapd/dump_database_destdir string /var/backups/slapd-VERSION\
-slapd slapd/no_configuration boolean false\
-slapd slapd/dump_database select when needed\
-slapd slapd/password_mismatch note\
-EOF\
+RUN echo "slapd slapd/password1 password admin\n\
+slapd slapd/internal/adminpw password admin\n\
+slapd slapd/internal/generated_adminpw password admin\n\
+slapd slapd/password2 password admin\n\
+slapd slapd/unsafe_selfwrite_acl note\n\
+slapd slapd/purge_database boolean false\n\
+slapd slapd/domain string phys.ethz.ch\n\
+slapd slapd/ppolicy_schema_needs_update select abort installation\n\
+slapd slapd/invalid_config boolean true\n\
+slapd slapd/move_old_database boolean false\n\
+slapd slapd/backend select MDB\n\
+slapd shared/organization string ETH Zurich\n\
+slapd slapd/dump_database_destdir string /var/backups/slapd-VERSION\n\
+slapd slapd/no_configuration boolean false\n\
+slapd slapd/dump_database select when needed\n\
+slapd slapd/password_mismatch note\n\
+" > /root/debconf-slapd.conf \
 && export DEBIAN_FRONTEND=noninteractive \
 && cat /root/debconf-slapd.conf | debconf-set-selections
 
