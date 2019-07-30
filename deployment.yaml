@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-ldap-ui-deployment
+  labels:
+    app: simple-ldap-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-ldap-ui
+  template:
+    metadata:
+      labels:
+        app: simple-ldap-ui
+    spec:
+      containers:
+      - name: simple-ldap-ui
+        image: simple-ldap-ui:latest
+        ports:
+        - containerPort: 5000
